@@ -1,0 +1,20 @@
+<launch>
+	<!-- global rosparam -->
+	<param name="use_sim_time" value="true"/>
+
+	<!-- rosbag -->
+	<node pkg="rosbag" type="play" name="player" args="--clock $(env HOME)/rosbag/infant/dkan_outdoor/2019-01-13-15-46-58.bag -s 60"/>
+
+	<!-- rviz -->
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find pc_visualization)/rviz_config/velodyne.rviz"/>
+
+	<!-- sensor driver -->
+	<include file="$(find velodyne_pointcloud)/launch/32e_points.launch"/>
+
+	<!-- main -->
+	<node pkg="pc_visualization" type="pc_visualization" name="pc_visualization" output="screen">
+        <remap from="/point_cloud" to="/velodyne_points"/>
+		<param name="color_r" type="double" value="1.0"/>
+		<param name="size" type="double" value="3.0"/>
+	</node>
+</launch>
