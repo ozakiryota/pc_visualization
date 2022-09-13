@@ -29,18 +29,17 @@ RUN echo 'function cmk(){ \n\
 ########## pc_visualization ##########
 RUN apt-get update && \
     apt-get install -y \
-		libpcl-dev \
 		ros-noetic-pcl-conversions \
 		ros-noetic-rviz
-# RUN apt-get update && \
-#     apt-get install -y \
-# 		libpcl-dev \
-# 		ros-noetic-pcl-conversions \
-# 		ros-noetic-rviz && \
-# 	cd ~/catkin_ws/src && \
-# 	git clone https://github.com/ozakiryota/pc_visualization.git && \
-# 	cd ~/catkin_ws/ && \
-# 	/bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_make"
+RUN apt-get update && \
+    apt-get install -y \
+		libpcl-dev \
+		ros-noetic-pcl-conversions \
+		ros-noetic-rviz && \
+	cd ~/catkin_ws/src && \
+	git clone https://github.com/ozakiryota/pc_visualization.git && \
+	cd ~/catkin_ws/ && \
+	/bin/bash -c "source /opt/ros/noetic/setup.bash; catkin_make"
 ########## Optional package ##########
 ## Velodyne driver
 RUN apt-get update && \
