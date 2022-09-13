@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="pc_visualization" type="pc_visualization" name="pc_visualization" output="screen">
+        <remap from="/point_cloud" to="/normal_cloud"/>
+		<param name="color_r" type="double" value="1.0"/>
+		<param name="size" type="double" value="3.0"/>
+	</node>
+</launch>
